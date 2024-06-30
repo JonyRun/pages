@@ -67,6 +67,9 @@ ${tg.initDataUnsafe.user.language_code}`;
                     client.appendChild(userid); //добавляем
                     //выводим ID;
                     console.log('Page loaded');
+                    function callButton() {
+                        tg.sendData('test');
+                    }
                 });
             </script>
         </div>
