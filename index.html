@@ -51,10 +51,17 @@
         </div>
         
     <script>
-        let tg = window.Telegram.WebApp;
+
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+          let tg = window.Telegram.WebApp;
         tg.MainButton.text = "Changed Text"; //изменяем текст кнопки 
         tg.expand(); //расширяем на все окно 
-        document.getElementById("client").innerHTML =test //выводим ID;
+        document.getElementById("client").innerHTML ="test" //выводим ID;
+        console.log('Page loaded');
+});
+
        </script>
     </div>
 </body>
