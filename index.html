@@ -74,7 +74,8 @@
                 // Define the callButton function outside the event listener
                 function callButton() {
                     let client = document.getElementById('client');
-                    profName.innerText = `${tg.initDataUnsafe.user.language_code}`;
+                    let profName = document.createElement('p');
+                    profName.innerText = `test`;
                     client.appendChild(profName);
                     if (window.Telegram && window.Telegram.WebApp) {
                         console.log("Button clicked");
