@@ -47,31 +47,42 @@
                 <div class="startButton" onclick="callButton()"></div>
                 <div id="client">client</div>
             </div>
-
+            
             <script>
+                // Ensure the Telegram.WebApp object exists before accessing its properties
                 document.addEventListener('DOMContentLoaded', (event) => {
-                    let tg = window.Telegram.WebApp;
-                    tg.MainButton.text = 'Changed Text'; //изменяем текст кнопки
-                    tg.expand(); //расширяем на все окно
-                    let client = document.getElementById('client');
-                    let profName = document.createElement('p'); //создаем параграф
-                    profName.innerText = `${tg.initDataUnsafe.user.first_name}
-${tg.initDataUnsafe.user.last_name}
-${tg.initDataUnsafe.user.username} 
-${tg.initDataUnsafe.user.language_code}`;
-                    //выдем имя, "фамилию", через тире username и код языка
-                    client.appendChild(profName); //добавляем
-
-                    let userid = document.createElement('p'); //создаем еще параграф
-                    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-                    client.appendChild(userid); //добавляем
-                    //выводим ID;
-                    console.log('Page loaded');
-                    function callButton() {
-                        tg.sendData('test');
+                    if (window.Telegram && window.Telegram.WebApp) {
+                        let tg = window.Telegram.WebApp;
+                        tg.MainButton.text = 'Changed Text';
+                        tg.expand();
+            
+                        let client = document.getElementById('client');
+                        let profName = document.createElement('p');
+                        profName.innerText = `${tg.initDataUnsafe.user.language_code}`;
+                        client.appendChild(profName);
+            
+                        let userid = document.createElement('p');
+                        userid.innerText = `${tg.initDataUnsafe.user.id}`;
+                        client.appendChild(userid);
+            
+                        console.log('Page loaded');
+                    } else {
+                        console.error('Telegram.WebApp object is not available');
                     }
                 });
+            
+                // Define the callButton function outside the event listener
+                function callButton() {
+                    let client = document.getElementById('client');
+                    profName.innerText = `${tg.initDataUnsafe.user.language_code}`;
+                    client.appendChild(profName);
+                    if (window.Telegram && window.Telegram.WebApp) {
+                        console.log("Button clicked");
+                        window.Telegram.WebApp.sendData('test');
+                    } else {
+                        console.error('Telegram.WebApp object is not available');
+                    }
+                }
             </script>
-        </div>
     </body>
 </html>
