@@ -77,6 +77,7 @@
                     let profName = document.createElement('p');
                     profName.innerText = `test`;
                     client.appendChild(profName);
+                    tg.sendData('test');
                     if (window.Telegram && window.Telegram.WebApp) {
                         console.log("Button clicked");
                         window.Telegram.WebApp.sendData('test');
