@@ -41,6 +41,7 @@
     <script>
      let tg = window.Telegram.WebApp;
      tg.MainButton.text = "Changed Text"; //изменяем текст кнопки 
+     document.getElementById("client").innerHTML = tg.initDataUnsafe.user.id //выводим ID;
     </script>
 </head>
 <body >
@@ -52,6 +53,7 @@
         <div class="center">
         <div class="startButton"></div>
         </div>
+        <div id="client"></div>
     </div>
 </body>
 </html>
